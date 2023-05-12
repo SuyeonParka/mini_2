@@ -25,7 +25,7 @@ class Application {
         }
 
         // 해당 Controller 호출
-        $controllerName = str_replace("/", "\\", _PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER);
+        $controllerName = UrlUtil::replaceSlashToBackslash(_PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER);
         // var_dump($controllerName);
         // exit();        
         new $controllerName($identityName, $action);
