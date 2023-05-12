@@ -40,8 +40,15 @@ class Controller {
         return self::$modelList[$identityName];
     }
 
-    // 파라미터를 확인해서 해당하는 view를 리턴하거나, redirect
+    // 파라미터를 확인해서 해당하는 view를 return하거나, redirect
     public function getView($view) {
+
+        //view 체크
+        if(strpos($view, _BASE_REDIRECT) === 0) {
+            header($view);
+            exit();
+        }
+
         return _PATH_VIEW.$view;
     }
 }

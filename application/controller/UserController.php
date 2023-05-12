@@ -8,6 +8,6 @@ class UserController extends Controller {
     }
 
     public function loginPost() {
-
+        return _BASE_REDIRECT."/product/list";
     }
 }
