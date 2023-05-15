@@ -28,4 +28,16 @@ class Model {
     protected function closeConn() {
         $this->conn = null;
     }
+
+    public function tranCommit() {
+        $this->conn->commit();
+    }
+
+    public function tranRollback() {
+        $this->conn->rollback();
+    }
+
+    public function tranBegin() {
+        $this->conn->beginTransaction();
+    }
 }

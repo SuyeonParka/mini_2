@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,19 +9,6 @@
     <title>Login</title>
 </head>
 <body>
-    <!--  
-    <h1>Login</h1>
-    <h3 style="color: red;">
-        <?php echo isset($this->errMsg) ? $this->errMsg : ""; ?>
-    </h3>
-    <form action="/user/login" method="post">  /붙여줘야함(url불어남 방지) 
-        <label for="id">ID</label>
-        <input type="text" name="id" id="id">
-        <label for="pw">PW</label>
-        <input type="text" name="pw" id="pw">
-        <button type="submit">Login</button>
-    </form>
--->
 <div class="container">
     <form class="my_form" method="post" action="/user/login">
         <h1>Login</h1>

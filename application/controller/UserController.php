@@ -29,6 +29,21 @@ class UserController extends Controller {
         session_destroy(); //세션 자체 파괴, 연결고리 끊음
 
         // 로그인 페이지 리턴
-        return "login"._EXTENSION_PHP;
+        return "login"._EXTENSION_PHP; //view파일명 리턴
+    }
+
+    // 회원가입 메소드
+    public function signGet() {
+        return "sign"._EXTENSION_PHP;
+    }
+
+    // bigbag 카테고리 메소드
+    public function bigbagGet() {
+        return "bigbag"._EXTENSION_PHP;
+    }
+    
+    //smallbag 카테고리 메소드
+    public function smallbagGet() {
+        return "smallbag"._EXTENSION_PHP;
     }
 }

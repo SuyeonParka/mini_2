@@ -31,4 +31,47 @@ class UserModel extends Model{
         return $result;
     }
     
+    public function signUp() {
+
+        $sql =
+        " INSERT INTO "
+        ." user_info "
+        ." ( "
+        ." u_id "
+        ." ,u_pw "
+        ." ) "
+        ." VALUES "
+        ." ( "
+        ." :u_id "
+        ." , :u_pw "
+        ." ) "
+        ;
+
+        $arr_prepare =
+        array(
+            ":u_id" => $param_arr["u_id"]
+            ,":u_pw" => $param_arr["u_pw"]
+        );
+
+        
+        try 
+        {
+            $this->conn->beginTransaction();//
+            $stmt = $conn -> prepare( $sql ); 
+            $stmt -> execute( $arr_prepare ); 
+            $result = $stmt->fetchAll();
+            $conn->commit();//
+        } 
+        catch ( Exception $e) 
+        {
+            $conn->rollBack();//
+            return $e->getMessage(); 
+        }
+        finally 
+        {
+            $conn = null; //
+        }
+
+        return $result;
+    }
 }

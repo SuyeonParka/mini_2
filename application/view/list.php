@@ -18,6 +18,10 @@
         body {
         font-family: 'PuradakGentleGothicR';
         }
+        
+        footer {
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -34,9 +38,7 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Shop
@@ -48,7 +50,6 @@
                 <li><a class="dropdown-item" href="#">item</a></li>
                 </ul>
             </li>
-            
             <li class="nav-item">
                 <a class="nav-link" href="login.php">
                     Login
