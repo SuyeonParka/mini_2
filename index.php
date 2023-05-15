@@ -8,4 +8,4 @@ require_once("application/lib/autoload.php");   // autoload 파일
 // echo $_GET["url"];
 
 // require_once("application/lib/Application.php");
-new application\lib\Application();  // Application 호출
+new application\lib\Application();  // Application 호출(어디에 있는 class인지 적어주고 class 호출)
