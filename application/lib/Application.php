@@ -11,8 +11,8 @@ class Application {
     // 생성자
     public function __construct() {
         $arrPath = UrlUtil::getUrlArrPath(); //접속 url을 배열로 획득. 0번방 user 1번방 login
-        $identityName = empty($arrPath[0]) ? "User" : ucfirst($arrPath[0]); //ucfirst는 aaa bbb일 때 Aaa bbb 로 되고 ucword는 Aaa Bbb로 됨. 0번방에 있는애가 엠티냐? ㄴㄴ그래서 뒤에꺼가 실행, User가 $identityName에 담김
-        $action = (empty($arrPath[1]) ? "login" : $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"])); //request method는 대문자로 가져옴, Get, Post로 나오게 변경해준거임, 어떤 메소드로 왔는지 체크함, $action에는 loginGet이 담김
+        $identityName = empty($arrPath[0]) ? "Shop" : ucfirst($arrPath[0]); //ucfirst는 aaa bbb일 때 Aaa bbb 로 되고 ucword는 Aaa Bbb로 됨. 0번방에 있는애가 엠티냐? ㄴㄴ그래서 뒤에꺼가 실행, User가 $identityName에 담김
+        $action = (empty($arrPath[1]) ? "main" : $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"])); //request method는 대문자로 가져옴, Get, Post로 나오게 변경해준거임, 어떤 메소드로 왔는지 체크함, $action에는 loginGet이 담김
         
         //controller명 작성
         $controllerPath = _PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER._EXTENSION_PHP;

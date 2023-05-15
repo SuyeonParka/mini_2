@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>List</title>
+    <title>Document</title>
     <style>
 
         @font-face {
@@ -20,10 +21,8 @@
         }
     </style>
 </head>
-<body>
-    <!-- List File!!!!! -->
-    <!-- <button id="logout" onclick="redirectLogout();">Logout</button> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body>   
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">OTIE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +49,7 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="login.php">
+                <a class="nav-link" href="/user/login">
                     Login
                 </a>
             </li>
@@ -60,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="sign.php" id="sign">
+                <a class="nav-link" href="/user/sign" id="sign">
                     Sign up
                 </a>
             </li>
