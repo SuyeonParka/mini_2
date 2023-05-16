@@ -2,21 +2,26 @@
 namespace application\model;
 
 class UserModel extends Model{
-    public function getUser($arrUserInfo) {
+    public function getUser($arrUserInfo, $pwFlg = true) {
         $sql = " SELECT "
             ." * "
             ." FROM "
             ." user_info "
             ." WHERE "
             ." u_id = :id "
-            ." AND "
-            ." u_pw = :pw "
             ;
         
+            if($pwFlg) {
+                $sql .= " and u_pw = :pw";  // 아이디 중복 (아이디는 같고 비번을 다를 때 아이디 중복이 안된다고 해서 하는 작업)
+            }
+
         $prepare = [
             ":id" => $arrUserInfo["id"]
-            ,":pw" => $arrUserInfo["pw"]
         ];
+
+        if($pwFlg) {
+            $prepare[":pw"] = $arrUserInfo["pw"];
+        }
 
         try {
             $stmt = $this->conn->prepare($sql);
@@ -26,12 +31,12 @@ class UserModel extends Model{
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
         } finally {
-            $this->closeConn();
+            
         }
         return $result;
     }
     
-    public function signUp() {
+    public function insertUserInfo($arrUserInfo) {
 
         $sql =
         " INSERT INTO "
@@ -39,39 +44,66 @@ class UserModel extends Model{
         ." ( "
         ." u_id "
         ." ,u_pw "
+        ." ,u_name "
         ." ) "
         ." VALUES "
         ." ( "
         ." :u_id "
         ." , :u_pw "
+        ." , :u_name "
         ." ) "
         ;
 
         $arr_prepare =
-        array(
-            ":u_id" => $param_arr["u_id"]
-            ,":u_pw" => $param_arr["u_pw"]
-        );
+            [
+                ":u_id" => $arrUserInfo["u_id"]
+                ,":u_pw" => $arrUserInfo["u_pw"]
+                ,":u_name" => $arrUserInfo["u_name"]
+            ];
 
         
         try 
         {
-            $this->conn->beginTransaction();//
-            $stmt = $conn -> prepare( $sql ); 
-            $stmt -> execute( $arr_prepare ); 
-            $result = $stmt->fetchAll();
-            $conn->commit();//
+            $stmt = $this->conn -> prepare( $sql ); 
+            $result = $stmt -> execute( $arr_prepare ); 
+            return $result;
         } 
         catch ( Exception $e) 
         {
-            $conn->rollBack();//
-            return $e->getMessage(); 
+            echo "UserModel->insertUser Error : ".$e->getMessage(); 
+            exit();
         }
-        finally 
-        {
-            $conn = null; //
-        }
+    }
 
+    // db의 product_list 정보
+    public function getList($arrListInfo) {
+        $sql = " SELECT "
+            ." list_name "
+            ." ,list_detail "
+            ." ,list_price "
+            ." FROM "
+            ." product_list "
+            ." WHERE "
+            ." list_no = :list_no "
+            ;
+        
+        $prepare = [
+            ":list_no" => $arrUserInfo["list_no"]
+        ];
+
+        $conn = null;
+
+        try {
+            db_conn($conn);
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute($prepare);
+            $result = $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "UserModel->getUser Error : ".$e->getMessage();
+            exit();
+        } finally {
+            $conn=null;
+        }
         return $result;
     }
 }

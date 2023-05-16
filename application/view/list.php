@@ -18,58 +18,14 @@
         body {
         font-family: 'PuradakGentleGothicR';
         }
-        
-        footer {
-            font-size: 10px;
-        }
     </style>
 </head>
 <body>
-    <!-- List File!!!!! -->
-    <!-- <button id="logout" onclick="redirectLogout();">Logout</button> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">OTIE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Shop
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">big-bag</a></li>
-                <li><a class="dropdown-item" href="#">small-bag</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">item</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.php">
-                    Login
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="logout" onclick="redirectLogout();">
-                    Logout
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="sign.php" id="sign">
-                    Sign up
-                </a>
-            </li>
-            </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-        </div>
-        </div>
-    </nav>
-
+    <!-- 헤더 -->
+    <?php
+        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
+    ?>
+    
     <!-- 카드(grid) -->
     <div class="container">
         <div class="row row-cols-xxl-4">
@@ -198,16 +154,9 @@
         </div>
     </div>
     
-    <footer class="container-fluid navbar-fixed-bottom">
-        <span>상호: 오타이 | 대표: 이예임 | 개인정보관리책임자: 이예임 | 전화: 010-0000-0000 | 이메일: otie-000@naver.com
-            
-            주소: 서울특별시 강북구 00로 000, 2층 (번동) | 사업자등록번호: 000-00-00000 | 통신판매: 0000-서울강북-0000 호 | 호스팅제공자: (주)00샵
-            <br>
-            <span class="foot">이용약관 개인정보처리방침 사업자정보확인</span>
-            <br>
-            Otie
-        </span>
-    </footer>
+    <?php
+        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/footer.php";
+    ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 

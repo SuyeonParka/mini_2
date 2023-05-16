@@ -9,6 +9,7 @@ class UserController extends Controller {
 
     public function loginPost() {
         $result = $this->model->getUser($_POST);
+        $this->model->closeConn(); //db파기
         // 유저 유무 체크
         if(count($result) === 0){
             $errMsg = "입력하신 회원 정보가 없습니다.";
@@ -37,6 +38,65 @@ class UserController extends Controller {
         return "sign"._EXTENSION_PHP;
     }
 
+    public function signPost() {
+        $arrPost = $_POST;
+        $arrChkErr = [];
+        // 유효성체크
+        // id 글자수 체크
+        if(mb_strlen($arrPost["id"]) === 0 || mb_strlen($arrPost["id"]) > 12){
+            $arrChkErr["id"] = "아이디는 12글자 이하로 입력해주세요.";
+        }
+        //todo id 영문자 체크(알아서)
+
+        //pw 글자수 체크
+        if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
+            $arrChkErr["pw"] = "비밀번호는 8~20글자로 입력해주세요.";
+        }
+        //todo pw 영문숫자 체크(알아서) */
+
+        //비밀번호와 비밀번호 체크 확인
+        if($arrPost["pw"] !== $arrPost["pwc"]){
+            $arrChkErr["pwc"] = "비밀번호가 일치하지 않습니다.";
+        }
+
+        if(mb_strlen($arrPost["name"]) === 0 || mb_strlen($arrPost["name"]) > 30){
+            $arrChkErr["name"] = "이름을 30글자 이하로 입력해주세요.";
+        }
+
+        // 유효성 체크 에러일 경우
+        if(!empty($arrChkErr)) {
+            // 에러메세지 세팅
+            $this->addDynamicProperty('arrError', $arrChkErr);
+            return "sign"._EXTENSION_PHP;
+        }
+
+        $result = $this->model->getUser($arrPost, false);
+
+        //유저 유무 체크
+        if(count($result) !== 0) {
+            $errMsg = "입력하신 ID가 사용중입니다.";
+            $this->addDynamicProperty("errMsg", $errMsg);
+            // 회원 가입 페이지
+            return "sign"._EXTENSION_PHP;
+        }
+
+        // user inert
+        if($this->model->insertUserInfo($arrPost)) {
+            echo "User Sign Error";
+            exit();
+        };
+        
+        // 로그인 페이지로 이동
+        return _BASE_REDIRECT."/user/login";
+        
+    }
+
+    
+
+    public function detailGet() {
+        return "detail"._EXTENSION_PHP;
+    }
+
     // bigbag 카테고리 메소드
     public function bigbagGet() {
         return "bigbag"._EXTENSION_PHP;
@@ -46,4 +106,5 @@ class UserController extends Controller {
     public function smallbagGet() {
         return "smallbag"._EXTENSION_PHP;
     }
+
 }

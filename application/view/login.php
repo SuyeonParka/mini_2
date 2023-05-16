@@ -29,7 +29,7 @@
         <input type="submit" value="Login" class="btn">
         <br>
         <br>
-        <span><a href="">아이디 저장하기</a></span>
+        <span><a href="/user/sign">회원가입</a></span>
         <span class="stick">|</span>
         <span><a href="">ID/PW 찾기 </a></span>
     </form>
