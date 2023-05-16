@@ -15,7 +15,7 @@
         include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
     ?>
     <!-- 카드(grid) -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="row row-cols-xxl-4">
             <div class="col d-flex justify-content-center pt-3 pb-3">
                     <a href="/user/detail">
@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

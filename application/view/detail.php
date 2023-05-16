@@ -1,3 +1,11 @@
+<?php
+
+$arr_get = $_GET;
+$result_info = getList( $arrListInfo["list_no"] );
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

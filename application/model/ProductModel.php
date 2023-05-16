@@ -3,7 +3,7 @@ namespace application\model;
 
 class ProductModel extends Model{
 
-     // db의 product_list 정보
+    // db의 product_list 정보
     public function getList($arrListInfo) {
         $sql = " SELECT "
             ." * "
@@ -18,16 +18,19 @@ class ProductModel extends Model{
         $conn = null;
 
         try {
-            db_conn($conn);
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute($prepare);
-            $result = $stmt->fetchAll();
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute($prepare);
+                $result = $stmt->fetchAll();
+
         } catch (Exception $e) {
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
+
         } finally {
             $conn=null;
         }
-        return $result;
+        return $result[0];
     }
+
+
 }
