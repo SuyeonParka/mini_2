@@ -10,10 +10,6 @@ class ProductModel extends Model{
             ." FROM "
             ." product_list "  
             ;
-        
-        $prepare = [
-            ":list_no" => $arrUserInfo["list_no"]
-        ];
 
         $conn = null;
 
@@ -21,7 +17,7 @@ class ProductModel extends Model{
                 $stmt = $this->conn->prepare($sql);
                 $stmt->execute($prepare);
                 $result = $stmt->fetchAll();
-
+                
         } catch (Exception $e) {
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
