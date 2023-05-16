@@ -10,7 +10,7 @@
 <body>
     <!-- 헤더 -->
     <?php
-        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
+        require_once(_HEADER._EXTENSION_PHP)
     ?>
     
     <!-- 카드(grid) -->
@@ -142,7 +142,7 @@
     </div>
     
     <?php
-        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/footer.php";
+        require_once(_FOOTER._EXTENSION_PHP)
     ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

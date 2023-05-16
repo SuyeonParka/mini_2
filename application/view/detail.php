@@ -1,7 +1,7 @@
 <?php
 
 $arr_get = $_GET;
-$result_info = getList( $arrListInfo["list_no"] );
+$result_info = $arr_get["list_no"];
 
 ?>
 
@@ -21,6 +21,11 @@ $result_info = getList( $arrListInfo["list_no"] );
     <?php
         include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
     ?>
+    <div class="con">
+        <?php $this->listInfo($list_no) ?>
+        <button>Cart</button>
+        <button>Buy</button>
+    </div>
     
 
 </body>

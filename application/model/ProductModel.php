@@ -22,8 +22,6 @@ class ProductModel extends Model{
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
 
-        } finally {
-            $conn=null;
         }
         return $result[0];
     }

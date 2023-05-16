@@ -12,7 +12,7 @@
 <body>   
 <!-- 헤더 -->
     <?php
-        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
+        require_once(_HEADER._EXTENSION_PHP)
     ?>
     <!-- 카드(grid) -->
     <!-- <div class="container">
@@ -119,6 +119,11 @@
         </div>
     </div> -->
 
+    <div class="row row-cols-xxl-4">
+        <?php 
+            $this->listList();
+        ?>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -141,7 +146,7 @@
     
     <!-- 푸터 -->
     <?php
-        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/footer.php";
+        require_once(_FOOTER._EXTENSION_PHP)
     ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

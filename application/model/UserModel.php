@@ -73,4 +73,104 @@ class UserModel extends Model{
         }
     }
 
+
+    public function userSel($userSel) {
+        
+    
+    $sql =
+        " SELECT "
+        ."  u_no "
+        ."  ,u_id "
+        ."  ,u_pw "
+        ."  ,u_name "
+        ." FROM  "
+        ." user_info "
+        ." WHERE u_no = :u_no "
+        ;
+    
+    $arr = getUser( $userSel );
+    
+    $arr_prepare =
+        array(
+            ":u_no" => $arr["u_no"]
+        );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn );
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result = $stmt->fetchAll();
+    } 
+    catch ( Exception $e ) 
+    {
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;
+    }
+    
+    return $result[0];
 }
+    
+    public function userUpdate($arrUpt) {
+        $sql =
+            " UPDATE "
+            ." user_info "
+            ." SET "
+            ." u_no "
+            ." ,u_id "
+            ." ,u_pw "
+            ." ,u_name "
+            ;
+
+        $arr_prepare = array();
+
+        $conn = null;
+        try{
+            db_conn( $conn );
+            $conn->beginTransaction();
+            $stmt = $conn->prepare( $sql );
+            $stmt->execute( $arr_prepare );
+            $result = $stmt->rowCount();
+            $conn->commit();
+        }
+        catch( Exception $e){
+            $conn->rollBack();
+            return $e->getMessage();
+        }
+        return $result;
+    }
+
+    public function listDel($list_del){
+        $sql =
+            " DELETE "
+            ." FROM "
+            ." user_info "
+            ." WHERE "
+            ." u_no = :u_no "
+            ;
+        
+        $arr_prepare =
+            array(
+                "u_no" => $list_del["u_no"]
+            );
+
+            $conn = null;
+            try{
+                db_conn( $conn );
+                $conn->beginTransaction();
+                $stmt = $conn->prepare( $sql );
+                $stmt->execute( $arr_prepare );
+                $result = $stmt->rowCount();
+                $conn->commit();
+            } catch ( Exception $e ){
+                $conn->rollBack();
+                return $e->getMessage();
+            }
+            
+            return $result;
+        }
+    }

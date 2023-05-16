@@ -31,3 +31,7 @@ define("_BASE_REDIRECT", "Location: ");
 
 
 define("_STR_LOGIN_ID", "u_id");
+
+define("_HEADER", "application/view/header");
+define("_FOOTER", "application/view/footer");
+
