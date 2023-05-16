@@ -30,9 +30,8 @@ class UserModel extends Model{
         } catch (Exception $e) {
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
-        } finally {
-            
         }
+
         return $result;
     }
     
@@ -56,9 +55,9 @@ class UserModel extends Model{
 
         $arr_prepare =
             [
-                ":u_id" => $arrUserInfo["u_id"]
-                ,":u_pw" => $arrUserInfo["u_pw"]
-                ,":u_name" => $arrUserInfo["u_name"]
+                ":u_id" => $arrUserInfo["id"]
+                ,":u_pw" => $arrUserInfo["pw"]
+                ,":u_name" => $arrUserInfo["name"]
             ];
 
         
@@ -70,40 +69,8 @@ class UserModel extends Model{
         } 
         catch ( Exception $e) 
         {
-            echo "UserModel->insertUser Error : ".$e->getMessage(); 
-            exit();
+            return false;
         }
     }
 
-    // db의 product_list 정보
-    public function getList($arrListInfo) {
-        $sql = " SELECT "
-            ." list_name "
-            ." ,list_detail "
-            ." ,list_price "
-            ." FROM "
-            ." product_list "
-            ." WHERE "
-            ." list_no = :list_no "
-            ;
-        
-        $prepare = [
-            ":list_no" => $arrUserInfo["list_no"]
-        ];
-
-        $conn = null;
-
-        try {
-            db_conn($conn);
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute($prepare);
-            $result = $stmt->fetchAll();
-        } catch (Exception $e) {
-            echo "UserModel->getUser Error : ".$e->getMessage();
-            exit();
-        } finally {
-            $conn=null;
-        }
-        return $result;
-    }
 }

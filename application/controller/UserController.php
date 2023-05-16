@@ -80,12 +80,19 @@ class UserController extends Controller {
             return "sign"._EXTENSION_PHP;
         }
 
+        // 트랜잭션 스타트
+        $this->model->tranBegin();
+
         // user inert
-        if($this->model->insertUserInfo($arrPost)) {
+        if(!$this->model->insertUserInfo($arrPost)) {
+            // 예외처리 롤백
+            $this->model->tranRollback();
             echo "User Sign Error";
             exit();
-        };
-        
+        }
+        $this->model->tranCommit(); // 정상처리 커밋
+        // 트랜잭션 끝
+
         // 로그인 페이지로 이동
         return _BASE_REDIRECT."/user/login";
         

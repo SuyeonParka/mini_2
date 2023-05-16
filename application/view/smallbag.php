@@ -5,30 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/application/view/css/view.css">
     <title>Document</title>
-    <style>
-        @font-face {
-            font-family: 'PuradakGentleGothicR';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-        font-family: 'PuradakGentleGothicR';
-        height:100%
-        }
-
-        .wrap {
-            min-height : 100%
-        }
-        footer {
-            font-size: 10px;
-            /* width: 100%; */
-            bottom: 0;
-            position: absolute;
-        }
-    </style>
 </head>
 <body>
 <div class="wrap">

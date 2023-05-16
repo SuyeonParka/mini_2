@@ -5,68 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/application/view/css/view.css">
     <title>Document</title>
-    <style>
-        @font-face {
-            font-family: 'PuradakGentleGothicR';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-        font-family: 'PuradakGentleGothicR';
-        }
-
-        footer {
-            font-size: 10px;
-        }
-    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="/shop/main">OTIE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Shop
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/user/bigbag">big-bag</a></li>
-                <li><a class="dropdown-item" href="/user/smallbag">small-bag</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">item</a></li>
-                </ul>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/user/login">
-                    Login
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="logout" onclick="redirectLogout();">
-                    Logout
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/sign" id="sign">
-                    Sign up
-                </a>
-            </li>
-            </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-        </div>
-        </div>
-    </nav>
+<!-- 헤더 -->
+    <?php
+        include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
+    ?>
     <div class="container">
         <div class="row row-cols-xxl-4">
             <div class="col d-flex justify-content-center pt-3 pb-3">

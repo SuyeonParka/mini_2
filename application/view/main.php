@@ -6,41 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/application/view/css/view.css">
     <title>Document</title>
-    <style>
-
-        @font-face {
-            font-family: 'PuradakGentleGothicR';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-        font-family: 'PuradakGentleGothicR';
-        }
-    </style>
 </head>
 <body>   
 <!-- 헤더 -->
-<?php
+    <?php
         include_once $_SERVER["DOCUMENT_ROOT"]."/application/view/header.php";
-?>
+    ?>
     <!-- 카드(grid) -->
     <div class="container">
         <div class="row row-cols-xxl-4">
             <div class="col d-flex justify-content-center pt-3 pb-3">
-                <a href="/user/detail">
+                    <a href="/user/detail">
                 <div class="card" style="width: 18rem;  float:none; margin:0 auto; border:none;">
                     <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678822932889_1000.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">RUSTILING HAND BAG</h5>
                     <p class="card-text">DENIM CLASSIC</p>
+                    </a>
                     <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         BUY/CART
                         </button>
                     </div>
-                </a>    
+                    
                 </div>
             </div>
             <div class="col d-flex justify-content-center pt-3 pb-3">
@@ -129,12 +118,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 모달 -->
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    구매하기
-    </button> -->
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
