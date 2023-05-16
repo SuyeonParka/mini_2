@@ -29,7 +29,7 @@ class UserController extends Controller {
         session_destroy(); //세션 자체 파괴, 연결고리 끊음
 
         // 로그인 페이지 리턴
-        return "login"._EXTENSION_PHP; //view파일명 리턴
+        return _BASE_REDIRECT."/shop/main"; //view파일명 리턴
     }
 
     // 회원가입 메소드

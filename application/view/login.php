@@ -12,10 +12,10 @@
 <div class="container">
     <form class="my_form" method="post" action="/user/login">
         <h1>Login</h1>
-        <input type="text" name = "id" id="log_id" placeholder="id" required>
+        <input type="text" name = "id" id="u_id" placeholder="id" required>
         <br>
         <br>
-        <input type="password" name = "pw" id="log_pw" placeholder="password" required>
+        <input type="password" name = "pw" id="u_pw" placeholder="password" required>
         <br>
         <br>
         <span>

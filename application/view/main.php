@@ -34,9 +34,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Shop
@@ -49,14 +46,23 @@
                 </ul>
             </li>
             
-            <li class="nav-item">
-                <a class="nav-link" href="/user/login">
-                    Login
-                </a>
-            </li>
+            <?php 
+                if(isset($_SESSION[_STR_LOGIN_ID]))
+            {
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="#" id="logout" onclick="redirectLogout();">
                     Logout
+                </a>
+            </li>
+            <?
+            } 
+                else
+            {
+            ?>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/login">
+                    Login
                 </a>
             </li>
             <li class="nav-item">
@@ -64,6 +70,9 @@
                     Sign up
                 </a>
             </li>
+            <?
+            }
+            ?>
             </ul>
             <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -77,6 +86,7 @@
     <div class="container">
         <div class="row row-cols-xxl-4">
             <div class="col d-flex justify-content-center pt-3 pb-3">
+                <a href="/user/detail">
                 <div class="card" style="width: 18rem;  float:none; margin:0 auto; border:none;">
                     <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678822932889_1000.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -86,6 +96,7 @@
                         BUY/CART
                         </button>
                     </div>
+                </a>    
                 </div>
             </div>
             <div class="col d-flex justify-content-center pt-3 pb-3">
