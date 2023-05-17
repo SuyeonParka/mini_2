@@ -18,7 +18,7 @@ class Controller {
 
     //!생성자
     public function __construct($identityName, $action) {   
-        //iden에는 User, action에는 loginGet이 담겨있음
+        //identityName에는 User, action에는 loginGet이 담겨있음
         //$action은 각각의 컨트롤러에 담겨있는 메소드 명
         //현재 세션이 없으면 session start
         if(!isset($_SESSION)) {
@@ -91,8 +91,9 @@ class Controller {
         //arrNeedAuth: 인증이 필요한 페이지
         foreach(self::$arrNeedAuth as $authPath) {
             // strpos($urlPath, $authPath)===0 : $urlPath(현재경로)가 $authPath(인증이 필요한 페이지 경로)로 시작되면
-            // ??$urlPath가 product/list 이고 $authPath가 product라면 strpost($urlPath, $authPath)는 0
+            // ??$urlPath가 product/list 이고 $authPath가 product라면 strpos($urlPath, $authPath)는 0
             // && 세션이 없다면(로그인이 안돼있으면)
+            // strpos 함수 : 문자열이 처음 나타나는 위치를 찾는 함수 (위치 값을 정수로 반환)
             if(!isset($_SESSION[_STR_LOGIN_ID]) && strpos($urlPath, $authPath) === 0) {
                 // 로그인 페이지도 redirect
                 header(_BASE_REDIRECT."/user/login");
