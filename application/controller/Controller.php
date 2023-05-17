@@ -56,31 +56,45 @@ class Controller {
             $modelName = UrlUtil::replaceSlashToBackslash(_PATH_MODEL.$identityName._BASE_FILENAME_MODEL);
             self::$modelList[$identityName] = new $modelName(); //model 호출, usermodel을 객체화해서 modelList에 담음
         }
+        //생성된 모델 객체 리턴
         return self::$modelList[$identityName]; //User라는 키를 이용해서 리턴
     }
 
     // 파라미터를 확인해서 해당하는 view를 return하거나, redirect
+    // $view = login.php
     protected function getView($view) { //$view에는 login.php가 담겨있음
 
-        //view 체크
+        //view 체크 : 화면 이동시에 _BASE_REDIRECT("Location:")을 붙여줌
         if(strpos($view, _BASE_REDIRECT) === 0) {   //문자열에서 지정한 검색 문자가 존재하는 경우에는 인덱스 값을, 존재하지 않는 경우에는 false를 반환
             header($view);
             exit();
         }
 
+        //뷰 파일 경로 반환
+        //application/view/login.php
         return _PATH_VIEW.$view;
     }
 
-    // 동적 속성(addDynamicProperty)를 셋팅하는 메소드
+    // 동적 속성(DynamicProperty)를 셋팅하는 메소드
+    // 필드에 선언되어 있지 않은 속성들을 처리 하면서 추가할 수 있음
+    // protected $model;은 정적 속성임
+    //??$this->key는 어디에도 선언되어 있지 않지만 ,처리하면서 추가 가능
     protected function addDynamicProperty($key, $val) {
+        // errMsg = 입력하신 회원 정보가 없습니다.;
         $this->$key = $val; //this에 key에 val를 담는 것
     }
 
     // 유저 권한 체크 메소드
     protected function chkAuthorization() {
+        //현재 URL 경로
         $urlPath = UrlUtil::getUrl();
+        //arrNeedAuth: 인증이 필요한 페이지
         foreach(self::$arrNeedAuth as $authPath) {
+            // strpos($urlPath, $authPath)===0 : $urlPath(현재경로)가 $authPath(인증이 필요한 페이지 경로)로 시작되면
+            // ??$urlPath가 product/list 이고 $authPath가 product라면 strpost($urlPath, $authPath)는 0
+            // && 세션이 없다면(로그인이 안돼있으면)
             if(!isset($_SESSION[_STR_LOGIN_ID]) && strpos($urlPath, $authPath) === 0) {
+                // 로그인 페이지도 redirect
                 header(_BASE_REDIRECT."/user/login");
                 exit;
             }

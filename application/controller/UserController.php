@@ -2,26 +2,37 @@
 
 namespace application\controller;
 
+// Controller class 상속 받음
 class UserController extends Controller {
+    // get방식으로 로그인 페이지를 요청할 때 실행되는 메소드
     public function loginGet() {    //login 접속할 때 이 메소드 호출
         return "login"._EXTENSION_PHP;
     }
- 
+    
+    // post방식으로 로그인 정보를 전달할 때 실행되는 메소드
     public function loginPost() {
         $result = $this->model->getUser($_POST);
         $this->model->closeConn(); //db파기
         // 유저 유무 체크
+        // 입력된 로그인 정보가 db에 있는지 확인하고, 정보가 없으면 에러메시지 출력 후 로그인 페이지 재로드
         if(count($result) === 0){
             $errMsg = "입력하신 회원 정보가 없습니다.";
             $this->addDynamicProperty("errMsg", $errMsg);
             // 로그인 페이지 리턴
             return "login"._EXTENSION_PHP;
         }
+
+        // 정보가 있다면, 로그인 성공 처리, 세션에 유저 ID를 저장하고, 리스트 페이지로 이동
         // session에 User ID 저장
         $_SESSION[_STR_LOGIN_ID] = $_POST["id"];
 
+        // session에 name 저장
+        $_SESSION[_STR_LOGIN_NAME] = $reuslt[0][STR_LOGIN_NAME];
+
         // 리스트 페이지 리턴
         return _BASE_REDIRECT."/shop/main";
+
+        // var_dump($result);
     }
 
     // 로그아웃 메소드
@@ -29,15 +40,16 @@ class UserController extends Controller {
         session_unset();    // 삭제
         session_destroy(); //세션 자체 파괴, 연결고리 끊음
 
-        // 로그인 페이지 리턴
+        // 메인 페이지 리턴
         return _BASE_REDIRECT."/shop/main"; //view파일명 리턴
     }
 
-    // 회원가입 메소드
+    // 회원가입 페이지 리턴 메소드
     public function signGet() {
         return "sign"._EXTENSION_PHP;
     }
 
+    // 회원가입 처리
     public function signPost() {
         $arrPost = $_POST;
         $arrChkErr = [];
@@ -101,11 +113,13 @@ class UserController extends Controller {
             echo "User Sign Error";
             exit();
         }
+        echo "<script>alert('가입 완료');</script>";
         $this->model->tranCommit(); // 정상처리 커밋
         // 트랜잭션 끝
 
         // 로그인 페이지로 이동
         return _BASE_REDIRECT."/user/login";
+        // return "login"._EXTENSION_PHP;
         
     }
 
@@ -134,7 +148,7 @@ class UserController extends Controller {
 
         return $result[0];
     }
-    
+
     //수정
     public function updatePost() {
         $arrPost = $_POST;

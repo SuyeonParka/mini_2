@@ -19,6 +19,7 @@ class UserModel extends Model{
             ":id" => $arrUserInfo["id"]
         ];
 
+        // pw 추가한 동적 쿼리
         if($pwFlg) {
             $prepare[":pw"] = $arrUserInfo["pw"];
         }
