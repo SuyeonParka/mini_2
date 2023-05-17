@@ -6,6 +6,7 @@ $arr = ["id" => $_SESSION["u_id"]];
 $result = $this->model->getUser($arr,false);
 // var_dump($result);
 
+$result_upt = $this->userUpdate($user);
 
 ?>
 

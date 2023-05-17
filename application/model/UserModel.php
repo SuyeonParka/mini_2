@@ -74,16 +74,22 @@ class UserModel extends Model{
     }
     
     //회원정보 수정
-    public function userUpdate($userUpt) {
+    public function userUpdate($arrUpt) {
         $sql =
             " UPDATE "
             ." user_info "
             ." SET "
-            ." ,u_pw "
-            ." ,u_name "
+            ." u_name = :name "
+            ." ,u_name = :pw "
+            ." WHERE "
+            ." u_no = :no ";
             ;
 
-        $arr_prepare = array();
+        $arr_prepare = array(
+            ":name" => $arrUpt["name"]
+            ,":pw" => $arrUpt["pw"]
+            ,":no" => $arrUpt["no"]
+        );
 
         $conn = null;
         try{
@@ -91,14 +97,13 @@ class UserModel extends Model{
             $conn->beginTransaction();
             $stmt = $conn->prepare( $sql );
             $stmt->execute( $arr_prepare );
-            $result = $stmt->rowCount();
             $conn->commit();
         }
         catch( Exception $e){
             $conn->rollBack();
             return $e->getMessage();
+            // return false;
         }
-        return $result;
     }
 
     // 회원정보 삭제

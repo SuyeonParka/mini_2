@@ -20,7 +20,7 @@ class Controller {
     public function __construct($identityName, $action) {   
         //iden에는 User, action에는 loginGet이 담겨있음
         //$action은 각각의 컨트롤러에 담겨있는 메소드 명
-        //!session start
+        //현재 세션이 없으면 session start
         if(!isset($_SESSION)) {
             session_start();
         }

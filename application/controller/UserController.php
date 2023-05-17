@@ -128,6 +128,13 @@ class UserController extends Controller {
         return "update"._EXTENSION_PHP;
     }
 
+    public function updateInfo() {
+        $result = $this->model->getUser($_SESSION[_STR_LOGIN_ID]);
+        $this->model->close();
+
+        return $result[0];
+    }
+    
     //수정
     public function updatePost() {
         $arrPost = $_POST;
