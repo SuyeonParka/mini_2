@@ -1,6 +1,12 @@
 <?php
+$http_method = $_SERVER["REQUEST_METHOD"];
+$arr_get = $_POST;
+// 이전페이지 값 가져오기
+// $id = $_POST["u_id"];
+// $pw = $_POST["u_pw"];
+// $name = $_POST["u_name"];
 
-
+var_dump($arr_get);
 
 
 ?>
@@ -18,7 +24,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="/user/sign" method="post">
+    <form action="/user/update" method="post">
     <h1>Update</h1>
     <br>
     <br>
@@ -32,7 +38,7 @@
             <div>
             <label for="id">id</label>
             <input type="text" name="id" id="id" placeholder="아이디를 입력하세요.">
-            <button type="button" onclick="chkDuplicationId()">id중복확인</button> -->
+            <button type="button" onclick="chkDuplicationId()">id중복확인</button>
             <span id="errMsgId">
                 <?php if(isset($this->arrError["id"])) {
                         echo $this->arrError["id"];

@@ -36,6 +36,11 @@
                     Logout
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/update" id="update">
+                    정보수정
+                </a>
+            </li>
             <?
             } 
                 else

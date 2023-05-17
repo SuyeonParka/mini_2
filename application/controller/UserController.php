@@ -98,8 +98,6 @@ class UserController extends Controller {
         
     }
 
-    
-
     public function detailGet() {
         return "detail"._EXTENSION_PHP;
     }
@@ -114,4 +112,8 @@ class UserController extends Controller {
         return "smallbag"._EXTENSION_PHP;
     }
 
+    //update 페이지 
+    public function updateGet() {
+        return "update"._EXTENSION_PHP;
+    }
 }

@@ -73,10 +73,8 @@ class UserModel extends Model{
         }
     }
 
-
+    // 로그인 된 회원정보 불러옴 (for수정)
     public function userSel($userSel) {
-        
-    
     $sql =
         " SELECT "
         ."  u_no "
@@ -85,14 +83,14 @@ class UserModel extends Model{
         ."  ,u_name "
         ." FROM  "
         ." user_info "
-        ." WHERE u_no = :u_no "
+        ." WHERE u_id = :u_id "
         ;
     
     $arr = getUser( $userSel );
     
     $arr_prepare =
         array(
-            ":u_no" => $arr["u_no"]
+            ":u_id" => $arr["u_id"]
         );
 
     $conn = null;
@@ -115,13 +113,12 @@ class UserModel extends Model{
     return $result[0];
 }
     
-    public function userUpdate($arrUpt) {
+    //회원정보 수정
+    public function userUpdate($userUpt) {
         $sql =
             " UPDATE "
             ." user_info "
             ." SET "
-            ." u_no "
-            ." ,u_id "
             ." ,u_pw "
             ." ,u_name "
             ;
@@ -144,6 +141,7 @@ class UserModel extends Model{
         return $result;
     }
 
+    // 회원정보 삭제
     public function listDel($list_del){
         $sql =
             " DELETE "
