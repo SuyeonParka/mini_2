@@ -72,46 +72,6 @@ class UserModel extends Model{
             return false;
         }
     }
-
-    // 로그인 된 회원정보 불러옴 (for수정)
-    public function userSel($userSel) {
-    $sql =
-        " SELECT "
-        ."  u_no "
-        ."  ,u_id "
-        ."  ,u_pw "
-        ."  ,u_name "
-        ." FROM  "
-        ." user_info "
-        ." WHERE u_id = :u_id "
-        ;
-    
-    $arr = getUser( $userSel );
-    
-    $arr_prepare =
-        array(
-            ":u_id" => $arr["u_id"]
-        );
-
-    $conn = null;
-    try 
-    {
-        db_conn( $conn );
-        $stmt = $conn->prepare( $sql );
-        $stmt->execute( $arr_prepare );
-        $result = $stmt->fetchAll();
-    } 
-    catch ( Exception $e ) 
-    {
-        return $e->getMessage();
-    }
-    finally
-    {
-        $conn = null;
-    }
-    
-    return $result[0];
-}
     
     //회원정보 수정
     public function userUpdate($userUpt) {

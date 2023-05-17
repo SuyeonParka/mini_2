@@ -41,18 +41,29 @@ class UserController extends Controller {
     public function signPost() {
         $arrPost = $_POST;
         $arrChkErr = [];
+        
         // 유효성체크
         // id 글자수 체크
         if(mb_strlen($arrPost["id"]) === 0 || mb_strlen($arrPost["id"]) > 12){
             $arrChkErr["id"] = "아이디는 12글자 이하로 입력해주세요.";
         }
-        //todo id 영문자 체크(알아서)
+        //todo id 영문자 체크(알아서) 정규식
+        $pattern = "/[^a-zA-Z0-9]/";    // ^ : 아닐 때
+        if(preg_match($pattern, $arrPost["id"]) !== 0) {  //int나 false를 리턴해옴
+            $arrChkErr["id"] = "ID는 영어 대문자, 영어 소문자, 숫자로만 입력해 주세요.";
+            $arrPost["id"] = "";
+        }
 
         //pw 글자수 체크
         if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
             $arrChkErr["pw"] = "비밀번호는 8~20글자로 입력해주세요.";
         }
         //todo pw 영문숫자 체크(알아서) */
+        $pattern = "/[^a-zA-Z0-9]/";    // ^ : 아닐 때
+        if(preg_match($pattern, $arrPost["pw"]) !== 0) {  //int나 false를 리턴해옴
+            $arrChkErr["pw"] = "PW는 영어 대문자, 영어 소문자, 숫자로만 입력해 주세요.";
+            $arrPost["pw"] = "";
+        }
 
         //비밀번호와 비밀번호 체크 확인
         if($arrPost["pw"] !== $arrPost["pwc"]){
@@ -112,8 +123,45 @@ class UserController extends Controller {
         return "smallbag"._EXTENSION_PHP;
     }
 
-    //update 페이지 
+    //update 페이지
     public function updateGet() {
         return "update"._EXTENSION_PHP;
     }
+
+    //수정
+    public function updatePost() {
+        $arrPost = $_POST;
+        $arrChkErr = [];
+
+        //유효성 체크
+        if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
+            $arrChkErr["pw"] = "비밀번호는 8~20글자로 입력해주세요.";
+        }
+
+        if($arrPost["pw"] !== $arrPost["pwc"]){
+            $arrChkErr["pwc"] = "비밀번호가 일치하지 않습니다.";
+        }
+
+        if(mb_strlen($arrPost["name"]) === 0 || mb_strlen($arrPost["name"]) > 30){
+            $arrChkErr["name"] = "이름을 30글자 이하로 입력해주세요.";
+        }
+
+        //에러메시지 
+        if(!empty($arrChkErr)) {
+            // 에러메세지 세팅
+            $this->addDynamicProperty('arrError', $arrChkErr);
+            return "update"._EXTENSION_PHP;
+        }
+
+        $result = $this->model->getUser($arrPost, false);
+
+        $result = $this->model->getUser($_POST);
+        $this->model->closeConn();
+
+        // 정상처리 되면 커밋
+        $this->model->tranCommit();
+
+        return _BASE_REDIRECT."/shop/main";
+    }
+
 }

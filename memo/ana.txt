@@ -15,3 +15,17 @@ db이미지 경로
 /application/view/img/pearl_cream.jpg
 /application/view/img/rousting.jpg
 /application/view/img/rusting_silver.jpg
+
+mariadb 대소문자 구문 못해서 BINARY 적어줘야 함
+테이블 만들때 binary 추가해주면됨
+
+select * from user_info WHERE BINARY u_pw = 'Tt';
+
+정규식 사이트
+RegEXr
+
+정규식 전화번호 예시
+010-9999-8888 로 하고싶다면
+^01[0-1]-([0-9]{3,4})-([0-9]{4})
+
+(무조건 01로 시작) 010또는 011 - 0-9사이의 3,4개 숫자 - 0-9사이의 숫자 4개

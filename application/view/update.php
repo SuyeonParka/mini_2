@@ -1,12 +1,10 @@
 <?php
-$http_method = $_SERVER["REQUEST_METHOD"];
-$arr_get = $_POST;
-// 이전페이지 값 가져오기
-// $id = $_POST["u_id"];
-// $pw = $_POST["u_pw"];
-// $name = $_POST["u_name"];
 
-var_dump($arr_get);
+$user = $_SESSION[_STR_LOGIN_ID];
+
+$arr = ["id" => $_SESSION["u_id"]];
+$result = $this->model->getUser($arr,false);
+// var_dump($result);
 
 
 ?>
@@ -25,7 +23,7 @@ var_dump($arr_get);
 <body>
 <div class="container">
     <form action="/user/update" method="post">
-    <h1>Update</h1>
+    <h1>회원정보</h1>
     <br>
     <br>
     <?php if(isset($this->errMsg)) { ?>
@@ -37,8 +35,7 @@ var_dump($arr_get);
     <? } ?>
             <div>
             <label for="id">id</label>
-            <input type="text" name="id" id="id" placeholder="아이디를 입력하세요.">
-            <button type="button" onclick="chkDuplicationId()">id중복확인</button>
+            <input type="text" name="id" id="id" value="<?php echo $result[0]["u_id"]?>">
             <span id="errMsgId">
                 <?php if(isset($this->arrError["id"])) {
                         echo $this->arrError["id"];
@@ -48,7 +45,7 @@ var_dump($arr_get);
             <br>
             <div>
             <label for="pw">pw</label>
-            <input type="text" name="pw" id="pw" placeholder="비밀번호를 입력하세요.">
+            <input type="text" name="pw" id="pw" value="<?php echo $result[0]["u_pw"]?>"placeholder="비밀번호를 입력하세요.">
             <span>
                 <?php if(isset($this->arrError["pw"])) {
                     echo $this->arrError["pw"];
@@ -68,7 +65,7 @@ var_dump($arr_get);
         <br>
         <div>
             <label for="name">name</label>
-            <input type="text" name="name" id="name" placeholder="이름을 입력하세요.">
+            <input type="text" name="name" id="name" value="<?php echo $result[0]["u_name"]?>"placeholder="이름을 입력하세요.">
             <span>
                 <?php if(isset($this->arrError["name"])) {
                     echo $this->arrError["name"];
@@ -77,7 +74,8 @@ var_dump($arr_get);
         </div>
         <br>
         <div class="button">
-            <input type="submit" value="Update" class="btn">
+            <input type="submit" value="수정" class="btn">
+            <a href=""><input type="submit" value="탈퇴" class="btn"></a>
         </div>
     </form>
 </div> 
