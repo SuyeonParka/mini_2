@@ -2,7 +2,7 @@
 namespace application\model;
 
 class UserModel extends Model{
-    public function getUser($arrUserInfo, $pwFlg = true) {
+    public function getUser($arrUserInfo, $pwFlg = true) { // 두개가 있으면 두개 쓰고 하나만 있으면 하나만 씀
         $sql = " SELECT "
             ." * "
             ." FROM "
