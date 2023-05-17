@@ -29,99 +29,11 @@
                         BUY/CART
                         </button>
                     </div>
-                    
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678823745299_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING SHOULDER BAG</h5>
-                    <p class="card-text">DENIM SKY</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678822983086_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTILING HAND BAG</h5>
-                    <p class="card-text">DENIM HAIRY</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678823008427_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING HAND BAG</h5>
-                    <p class="card-text">SILVER</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678822572282_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING HAND BAG</h5>
-                    <p class="card-text">BLUSH PINK</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678822368713_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING HAND BAG</h5>
-                    <p class="card-text">PEARL CREAM</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678824149036_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING CROSS BAG MINI</h5>
-                    <p class="card-text">SILVER</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center pt-3 pb-3">
-                <div class="card" style="width: 18rem; float:none; margin:0 auto; border:none">
-                    <img src="https://contents.sixshop.com/thumbnails/uploadedFiles/109465/product/image_1678823978095_1000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">RUSTLING CROSS BAG MINI</h5>
-                    <p class="card-text">BLUSH PINK</p>
-                    <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        BUY/CART
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div> -->
 
     <div class="row row-cols-xxl-4">
         <?php 
-            $this->listList();
+            $this->allList();
         ?>
     </div>
     <!-- Modal -->

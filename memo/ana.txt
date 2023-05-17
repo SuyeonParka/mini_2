@@ -5,3 +5,13 @@
 3. 로그아웃 누르면 = 로그아웃 => 홈
 
 로그아웃에 onclick
+
+db이미지 경로
+/application/view/img/blush_pink.jpg
+/application/view/img/denim_classic.jpg
+/application/view/img/denim_sky.jpg
+/application/view/img/mini_pink.jpg
+/application/view/img/mini_silver.jpg
+/application/view/img/pearl_cream.jpg
+/application/view/img/rousting.jpg
+/application/view/img/rusting_silver.jpg
