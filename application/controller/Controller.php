@@ -11,14 +11,14 @@ class Controller {
     private static $modelList = [];                     // 필드
     private static $arrNeedAuth = ["product/list"];
 
-    // 생성자
+    //!생성자
     public function __construct($identityName, $action) {   //iden에는 User, action에는 loginGet이 담겨있음, action은 각각의 컨트롤러에 담겨있는 메소드 명
-        // session start
+        //!session start
         if(!isset($_SESSION)) {
             session_start();
         }
         
-        // 유저 로그인 및 권한 체크
+        //!유저 로그인 및 권한 체크
         $this->chkAuthorization();
 
         // model 호출
@@ -36,7 +36,7 @@ class Controller {
         require_once $this->getView($view); //login화면 처리, 처리 종료
     }
 
-    // model 호출하고 결과를 리턴
+    //!model 호출하고 결과를 리턴 (해당 모델 호출)
     protected function getModel($identityName){
         // model 생성 체크
         if(!in_array($identityName, self::$modelList)) {    //self 컨트롤러 나자신을 가리킴

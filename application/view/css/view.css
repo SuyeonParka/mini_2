@@ -20,3 +20,66 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    display: grid;
+    justify-content: space-around;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
+    width: 50vw;
+    height: 30vh;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 30px;
+}
+
+.btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 0.3rem;
+    border-radius: 5px;
+    border: 1px solid #000;
+    width: 170px;
+    height: 3vh;
+    background-color: #ecedf0;
+}
+
+.bnt1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100px;
+    height: 10px;
+    font-weight: 600;
+    font-size: 0.3rem;
+    border-radius: 5px;
+    background-color: #ecedf0;
+
+} 
+span {
+    font-size: 0.5rem;
+}
+
+.stick {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.stay {
+    font-size: 0.3rem;
+}

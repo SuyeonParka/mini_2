@@ -6,7 +6,7 @@ class UserController extends Controller {
     public function loginGet() {    //login 접속할 때 이 메소드 호출
         return "login"._EXTENSION_PHP;
     }
-
+ 
     public function loginPost() {
         $result = $this->model->getUser($_POST);
         $this->model->closeConn(); //db파기
@@ -41,7 +41,7 @@ class UserController extends Controller {
     public function signPost() {
         $arrPost = $_POST;
         $arrChkErr = [];
-        
+
         // 유효성체크
         // id 글자수 체크
         if(mb_strlen($arrPost["id"]) === 0 || mb_strlen($arrPost["id"]) > 12){
@@ -155,7 +155,6 @@ class UserController extends Controller {
 
         $result = $this->model->getUser($arrPost, false);
 
-        $result = $this->model->getUser($_POST);
         $this->model->closeConn();
 
         // 정상처리 되면 커밋
