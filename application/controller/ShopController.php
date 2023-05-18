@@ -55,7 +55,8 @@ class ShopController extends Controller {
                     </a>
                 </div>
             </div>
-        </div>';
+        </div>
+        ';
         // 각각 배열의 해당 키에 저장된 값을 사용해서 출력
         $i++;
         }

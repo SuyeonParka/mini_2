@@ -80,34 +80,62 @@ class UserModel extends Model{
             " UPDATE "
             ." user_info "
             ." SET "
-            ." u_name = :name "
-            ." ,u_name = :pw "
+            ." u_name = :name " //:name은 변수같은 느낌. 아무거나 적어도 됨
+            ." ,u_pw = :pw "
             ." WHERE "
-            ." u_no = :no ";
+            ." u_id = :id "
             ;
 
-        $arr_prepare = array(
-            ":name" => $arrUpt["name"]
+        $arr_prepare = array( 
+            ":id" => $arrUpt["id"]
             ,":pw" => $arrUpt["pw"]
-            ,":no" => $arrUpt["no"]
+            ,":name" => $arrUpt["name"]
         );
 
         $conn = null;
-        try{
-            db_conn( $conn );
-            $conn->beginTransaction();
-            $stmt = $conn->prepare( $sql );
-            $stmt->execute( $arr_prepare );
-            $conn->commit();
-        }
-        catch( Exception $e){
-            $conn->rollBack();
-            return $e->getMessage();
-            // return false;
+
+        try 
+        {
+            $stmt = $this->conn -> prepare( $sql ); 
+            $result = $stmt -> execute( $arr_prepare ); 
+            return $result;
+        } 
+        catch ( Exception $e) 
+        {
+            return false; //에러났을 때 리턴 false
         }
     }
 
-    // 회원정보 삭제
+    // 회원정보 삭제 플래그 설정
+    public function uptUserDelFlg( $uDelFlg )
+    {
+    $sql = 
+        " UPDATE routine_info "
+        ." SET "
+        ."  u_flg = '1' "
+        ." WHERE u_no = :u_no "  
+        ;
+    
+    $arr_prepare = 
+        array(
+            ":u_no" => $uDelFlg["u_no"]
+        );
+    
+    $conn = null;
+
+    try 
+    {
+        $stmt = $this->conn -> prepare( $sql ); 
+        $result = $stmt -> execute( $arr_prepare ); 
+        return $result;
+    } 
+    catch ( Exception $e) 
+    {
+        return false; //에러났을 때 리턴 false
+    }
+    }
+
+// 회원정보 삭제
     public function listDel($list_del){
         $sql =
             " DELETE "
@@ -117,24 +145,22 @@ class UserModel extends Model{
             ." u_no = :u_no "
             ;
         
-        $arr_prepare =
-            array(
-                "u_no" => $list_del["u_no"]
-            );
+    $arr_prepare =
+    array(
+        "u_no" => $list_del["u_no"]
+    );
 
-            $conn = null;
-            try{
-                db_conn( $conn );
-                $conn->beginTransaction();
-                $stmt = $conn->prepare( $sql );
-                $stmt->execute( $arr_prepare );
-                $result = $stmt->rowCount();
-                $conn->commit();
-            } catch ( Exception $e ){
-                $conn->rollBack();
-                return $e->getMessage();
-            }
-            
+    $conn = null;
+    try 
+    {
+        $stmt = $this->conn -> prepare( $sql ); 
+        $result = $stmt -> execute( $arr_prepare ); 
+        return $result;
+    } 
+    catch ( Exception $e) 
+    {
+        return false; //에러났을 때 리턴 false
+    }
             return $result;
         }
     }

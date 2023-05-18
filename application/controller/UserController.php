@@ -27,7 +27,7 @@ class UserController extends Controller {
         $_SESSION[_STR_LOGIN_ID] = $_POST["id"];
 
         // session에 name 저장
-        $_SESSION[_STR_LOGIN_NAME] = $reuslt[0][STR_LOGIN_NAME];
+        // $_SESSION[_STR_LOGIN_NAME] = $reuslt[0][STR_LOGIN_NAME];
 
         // 리스트 페이지 리턴
         return _BASE_REDIRECT."/shop/main";
@@ -139,6 +139,13 @@ class UserController extends Controller {
 
     //update 페이지
     public function updateGet() {
+        $user = $_SESSION[_STR_LOGIN_ID];   //session에 담긴 u_id가 담김
+
+        //로그인 된 회원 정보 출력
+        $arr = ["id" => $user];
+        $result = $this->model->getUser($arr,false);
+
+        $this->addDynamicProperty('result_upt', $result);
         return "update"._EXTENSION_PHP;
     }
 
@@ -154,6 +161,7 @@ class UserController extends Controller {
         $arrPost = $_POST;
         $arrChkErr = [];
 
+        // var_dump($arrPost);
         //유효성 체크
         if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
             $arrChkErr["pw"] = "비밀번호는 8~20글자로 입력해주세요.";
@@ -174,14 +182,42 @@ class UserController extends Controller {
             return "update"._EXTENSION_PHP;
         }
 
-        $result = $this->model->getUser($arrPost, false);
+        // select
+        // $result = $this->model->getUser($arrPost, false); search한 정보를 불러온걸 업뎃해서 계속 값이 안바꼈음
 
-        $this->model->closeConn();
+        $this->model->tranBegin();
 
-        // 정상처리 되면 커밋
-        $this->model->tranCommit();
+        // user insert
+        if(!$this->model->userUpdate($arrPost)) { // 넘어온 정보가 없으면 롤백
+            // 예외처리 롤백
+            $this->model->tranRollback();
+            echo "User update Error";
+            exit();
+        }
+        // var_dump($result);
+        $this->model->tranCommit(); //성공 시 커밋
 
-        return _BASE_REDIRECT."/shop/main";
+        echo "<script>alert('수정 완료');</script>";
+        return "login"._EXTENSION_PHP;
+
+        // return _BASE_REDIRECT."/shop/main";
     }
 
+    // 회원 탈퇴 업데이트, 탈퇴
+    public function userflgPost() {
+        $arrPost = $_POST;
+
+        if($arrPost["u_flg"] === 0){
+
+            $this->model->tranRollback();
+            echo "User del Error";
+            $this->model->uptUserDelFlg();
+        } 
+        
+        $this->model->tranCommit();
+
+        echo "<script>alert('탈퇴가 완료되었습니다.');</script>";
+    }
+
+    
 }

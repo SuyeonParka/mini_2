@@ -61,7 +61,7 @@ h1 {
     background-color: #ecedf0;
 }
 
-.bnt1 {
+/* .button>input {
     font-family: 'Noto Sans KR', sans-serif;
     width: 100px;
     height: 10px;
@@ -69,8 +69,8 @@ h1 {
     font-size: 0.3rem;
     border-radius: 5px;
     background-color: #ecedf0;
+}  */
 
-} 
 span {
     font-size: 0.5rem;
 }
@@ -82,4 +82,8 @@ span {
 
 .stay {
     font-size: 0.3rem;
+}
+
+.lab {
+    width: 100px;
 }
