@@ -27,7 +27,7 @@ class UserModel extends Model{
         try {
             $stmt = $this->conn->prepare($sql);
             $stmt->execute($prepare);
-            $result = $stmt->fetchAll();
+            $result = $stmt->fetchAll(); 
         } catch (Exception $e) {
             echo "UserModel->getUser Error : ".$e->getMessage();
             exit();
