@@ -1,3 +1,10 @@
+<?php
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -60,9 +67,12 @@
             }
             ?>
             </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
+            <form class="d-flex" method="GET" action="/user/search">
+                <!-- <select name="catgo" id="">
+                    <option value="list_name"></option>
+                </select> -->
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="want">
+            <input class="btn btn-light" type="submit" name="search" value="검색">
             </form>
         </div>
         </div>

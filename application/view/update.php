@@ -36,7 +36,7 @@ if ( $httpMethod === "POST" ) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/application/view/css/login.css">
+    <link rel="stylesheet" href="/application/view/css/view.css">
     <title>Update</title>
 </head>
 <body>
@@ -57,8 +57,8 @@ if ( $httpMethod === "POST" ) {
     <? } ?>
             <div>
             <div class="lab"><label for="id">아이디</label></div>
-            <input type="text" name="id" id="id" value="<?php echo $httpMethod === 'POST' ? $idVal : $this->result_upt[0]["u_id"]?>" size="30" readonly>  <!-- 처음에 넘어올 때 get으로 넘어와서 -->
-            <span id="errMsgId">
+            <input type="text" name="id" id="id" value="<?php echo $httpMethod === 'POST' ? $idVal : $this->result_upt[0]["u_id"]?>" size="30">  <!-- 처음에 넘어올 때 get으로 넘어와서 -->
+            <span style="color: red;">
             <br>
                 <?php if(isset($this->arrError["id"])) {
                         echo $this->arrError["id"];
@@ -70,7 +70,7 @@ if ( $httpMethod === "POST" ) {
             <div class="lab"><label for="pw">비밀번호</label></div>
             <input type="text" name="pw" id="pw" value="<?php echo $httpMethod === 'POST' ? $pwVal : $this->result_upt[0]["u_pw"]?>" size="30" placeholder="비밀번호를 입력하세요.">
             <br>
-            <span>
+            <span style="color: red;">
                 <?php if(isset($this->arrError["pw"])) {
                     echo $this->arrError["pw"];
                 } ?>
@@ -80,7 +80,7 @@ if ( $httpMethod === "POST" ) {
             <div>
             <div class="lab"><label for="pwc">비밀번호 확인</label></div>
             <input type="text" name="pwc" id="pwc" placeholder="비밀번호 확인." size="30">
-            <span>
+            <span  style="color: red;">
             <br>
                 <?php if(isset($this->arrError["pwc"])) { 
                     echo $this->arrError["pwc"];
@@ -91,7 +91,7 @@ if ( $httpMethod === "POST" ) {
             <div>
             <div class="lab"><label for="name">이름</label></div>
             <input type="text" name="name" id="name" value="<?php echo $httpMethod === 'POST' ? $nameVal : $this->result_upt[0]["u_name"]?> "placeholder="이름을 입력하세요." size="30">
-            <span>
+            <span style="color: red;"> 
             <br>
                 <?php if(isset($this->arrError["name"])) {
                     echo $this->arrError["name"];

@@ -219,5 +219,14 @@ class UserController extends Controller {
         echo "<script>alert('탈퇴가 완료되었습니다.');</script>";
     }
 
+    // 검색 
+    public function searchGet() {
+        $arrGet = $_GET;
+
+        $this->model->listSearch($arrGet);
+        return "search"._EXTENSION_PHP; 
+        
+        var_dump($arrGet);
+    }
     
 }

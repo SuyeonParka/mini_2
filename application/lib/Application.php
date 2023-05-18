@@ -55,7 +55,7 @@ class Application {
         // var_dump($controllerName);
         // exit(); 
         
-        //슬러시를 역슬러시로 바꾼게 controllerName에 저장
+        //슬러시를 역슬러시로 바꾼게 controllerName에 저장 
         // application\controller\Usercontroller('User', 'loginGet')
         // 특정값을 변수에 담고 그걸 이용할때 new 사용해서 새로운 객체 사용
         new $controllerName($identityName, $action); 
@@ -64,8 +64,8 @@ class Application {
 
 
 
-        // var_dump($identityName, $action);
-        // exit;
+        var_dump($identityName, $action);
+        exit;
     }
 }
 

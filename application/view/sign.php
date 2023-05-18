@@ -32,6 +32,7 @@
             <div class="lab"><label for="id">아이디</label></div>
             <input type="text" name="id" id="id" placeholder="아이디를 입력하세요.">
             <button type="button" onclick="chkDuplicationId()">id중복확인</button>
+            <br>
             <span id="errMsgId">
                 <?php if(isset($this->arrError["id"])) {
                         echo $this->arrError["id"];
@@ -42,6 +43,7 @@
             <div>
             <div class="lab"><label for="pw">비밀번호</label></div>
             <input type="text" name="pw" id="pw" placeholder="비밀번호를 입력하세요.">
+            <br>
             <span>
                 <?php if(isset($this->arrError["pw"])) {
                     echo $this->arrError["pw"];
@@ -52,6 +54,7 @@
             <div>
             <div class="lab"><label for="pwc">비밀번호 확인</label></div>
             <input type="text" name="pwc" id="pwc" placeholder="비밀번호 확인.">
+            <br>
             <span>
                 <?php if(isset($this->arrError["pwc"])) { 
                     echo $this->arrError["pwc"];
@@ -62,6 +65,7 @@
             <div>
             <div class="lab"><label for="name">이름</label></div>
             <input type="text" name="name" id="name" placeholder="이름을 입력하세요.">
+            <br>
             <span>
                 <?php if(isset($this->arrError["name"])) {
                     echo $this->arrError["name"];
