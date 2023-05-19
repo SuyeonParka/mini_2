@@ -52,7 +52,7 @@ class Controller {
         if(!in_array($identityName, self::$modelList)) {  //있는지 없는지 체크하고 있으면 있는값 넣고 없으면 새로 생성  
             //self 컨트롤러 나자신을 가리킴
             //model class 호출해서 모델 객체 생성
-            //나 자신(Controller.php)의 $modelList를 사용하겠다
+            //나 자신(Controller.php)의 $modelList를 사용하겠다 ($modelList가 정적변수라서??)
             $modelName = UrlUtil::replaceSlashToBackslash(_PATH_MODEL.$identityName._BASE_FILENAME_MODEL);
             self::$modelList[$identityName] = new $modelName(); //model 호출, usermodel을 객체화해서 modelList에 담음
         }

@@ -40,7 +40,7 @@ class Application {
 
         // 에러 처리(해당 controller 파일 존재 여부 체크)
         // 컨트롤러 파일이 있는지 확인하고, 없으면 오류 메시지와 함께 프로그램을 종료
-        // //호출할게 없으면 에러처리가 힘들어서 미리 해당 파일이있는지 확인
+        //호출할게 없으면 에러처리가 힘들어서 미리 해당 파일이있는지 확인
         
         if(!file_exists($controllerPath)) {
             echo "해당 컨트롤러 파일이 없습니다. : ".$controllerPath;
@@ -64,7 +64,7 @@ class Application {
 
 
 
-        var_dump($identityName, $action);
+        // var_dump($identityName, $action);
         exit;
     }
 }

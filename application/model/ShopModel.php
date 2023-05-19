@@ -44,21 +44,21 @@ class ShopModel extends Model{
     }
 
     // 상품 검색 기능
-    public function listSearch() {
-        $sql =
-            " SELECT "
-            ." * "
-            ." FROM "
-            ." product_info "
-            ." WHERE "
-            ." list_name LIKE '%$search_word%$' ";
+    // public function listSearch() {
+    //     $sql =
+    //         " SELECT "
+    //         ." * "
+    //         ." FROM "
+    //         ." product_info "
+    //         ." WHERE "
+    //         ." list_name LIKE '%$search_word%$' ";
 
-        $t = $_GET['want'];
-        $result = mysqli_query($conn, $sql);
+    //     $t = $_GET['want'];
+    //     $result = mysqli_query($conn, $sql);
 
-        while($board = $sql->fetch_array()) {
-            $list = $board["list_name"];
-        }
-        return $result;
-    }
+    //     while($board = $sql->fetch_array()) {
+    //         $list = $board["list_name"];
+    //     }
+    //     return $result;
+    // }
 }
