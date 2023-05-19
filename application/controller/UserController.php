@@ -59,8 +59,8 @@ class UserController extends Controller {
         if(mb_strlen($arrPost["id"]) === 0 || mb_strlen($arrPost["id"]) > 12){
             $arrChkErr["id"] = "아이디는 12글자 이하로 입력해주세요.";
         }
-        //todo id 영문자 체크(알아서) 정규식
-        $pattern = "/[^a-zA-Z0-9]/";    // ^ : 아닐 때
+        //todo id 영문자 체크
+        $pattern = "/[^a-zA-Z0-9]/";    // ^ : 문자열의 시작을 알리는 것
         if(preg_match($pattern, $arrPost["id"]) !== 0) {  //int나 false를 리턴해옴
             $arrChkErr["id"] = "ID는 영어 대문자, 영어 소문자, 숫자로만 입력해 주세요.";
             $arrPost["id"] = "";
@@ -70,10 +70,10 @@ class UserController extends Controller {
         if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
             $arrChkErr["pw"] = "비밀번호는 8~20글자로 입력해주세요.";
         }
-        //todo pw 영문숫자 체크(알아서) */
-        $pattern = "/[^a-zA-Z0-9]/";    // ^ : 아닐 때
-        if(preg_match($pattern, $arrPost["pw"]) !== 0) {  //int나 false를 리턴해옴
-            $arrChkErr["pw"] = "PW는 영어 대문자, 영어 소문자, 숫자로만 입력해 주세요.";
+        //todo pw 영문 대 소문자, 숫자, 특수문자 사용 */
+        $pattern2 = "/(?=.*[a-z]).(?=.*[0-9]).(?=.*?[!,@,#,$,%,^,&,*,?,_,~,-])/";
+        if(preg_match($pattern2, $arrPost["pw"]) !== 1) {  //int나 false를 리턴해옴
+            $arrChkErr["pw"] = "PW는 영어 소문자, 숫자, 특수문자로 입력해 주세요.";
             $arrPost["pw"] = "";
         }
 
